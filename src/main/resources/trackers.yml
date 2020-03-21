@@ -1,0 +1,25 @@
+trackers:
+  diamonds_mined:
+    name:
+      display_in_name: false
+      name_format: "%current_name% &c&l[&e%number%&c&l]"
+    lore:
+      display_in_lore: true
+      lore_format: "&7Diamonds Mined: &b%number%"
+    statistic:
+      # Use the names found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Statistic.html :)
+      name: MINE_BLOCK
+      data:
+        material: DIAMOND_ORE
+    application_item:
+      name: "&b&lTracker Application Crystal"
+      lore:
+        - "&7This item will apply the &bDiamonds Mined"
+        - "&7tracker to your pickaxe."
+      material: DIAMOND
+    supported_items:
+      - 'DIAMOND_PICKAXE'
+      - 'GOLD_PICKAXE'
+      - 'IRON_PICKAXE'
+      - 'STONE_PICKAXE'
+      - 'WOODEN_PICKAXE'
