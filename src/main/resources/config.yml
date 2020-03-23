@@ -1,3 +1,7 @@
 # ItemTrackers by 89apt89
 
+# Outputs useful debug information to console. Only enable this if you know what you're doing (or apt asked you to :p)
 debug-mode: false
+
+# Should users require the `itemtrackers.apply.[tracker_name]` permission to apply a tracker?
+permission-based-application: false

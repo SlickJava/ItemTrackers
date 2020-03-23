@@ -1,0 +1,3 @@
+prefix: '&3[&eItemTrackers&3] '
+tracker-added: '&7The &b%name% &7tracker has been added to your item.'
+tracker-not-compatible: '&cThat tracker is incompatible with this item.'

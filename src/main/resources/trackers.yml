@@ -8,6 +8,7 @@ trackers:
       lore_format: "&7Diamonds Mined: &b%number%"
     statistic:
       # Use the names found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Statistic.html :)
+      # Use '*' to target all values - i.e. 'material: * or 'entity_type: *'
       name: MINE_BLOCK
       data:
         material: DIAMOND_ORE
@@ -17,9 +18,36 @@ trackers:
         - "&7This item will apply the &bDiamonds Mined"
         - "&7tracker to your pickaxe."
       material: DIAMOND
+    # Use the names found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html :ok_hand:
     supported_items:
       - 'DIAMOND_PICKAXE'
-      - 'GOLD_PICKAXE'
+      - 'GOLDEN_PICKAXE'
+      - 'IRON_PICKAXE'
+      - 'STONE_PICKAXE'
+      - 'WOODEN_PICKAXE'
+  entities_killed:
+    name:
+      display_in_name: true
+      name_format: "%current_name% &c&l[&e%number%&c&l]"
+    lore:
+      display_in_lore: false
+      lore_format: "&7Diamonds Mined: &b%number%"
+    statistic:
+      # Use the names found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Statistic.html :)
+      # Use '*' to target all values - i.e. 'material: * or 'entity_type: *'
+      name: KILL_ENTITY
+      data:
+        material: ZOMBIE
+    application_item:
+      name: "&b&lTracker Application Crystal"
+      lore:
+        - "&7This item will apply the &bDiamonds Mined"
+        - "&7tracker to your pickaxe."
+      material: DIAMOND
+    # Use the names found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html :ok_hand:
+    supported_items:
+      - 'DIAMOND_PICKAXE'
+      - 'GOLDEN_PICKAXE'
       - 'IRON_PICKAXE'
       - 'STONE_PICKAXE'
       - 'WOODEN_PICKAXE'
