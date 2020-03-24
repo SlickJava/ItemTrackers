@@ -1,10 +1,7 @@
 package systems.kscott.itemtrackers.commands;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -20,6 +17,7 @@ import systems.kscott.itemtrackers.util.Chat;
 import java.util.List;
 
 @CommandAlias("itemtrackers|it")
+@CommandPermission("itemtrackers.main")
 public class CommandItemTrackers extends BaseCommand {
 
     private ItemTrackers plugin;

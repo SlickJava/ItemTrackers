@@ -1,3 +1,5 @@
 prefix: '&3[&eItemTrackers&3] '
 tracker-added: '&7The &b%name% &7tracker has been added to your item.'
 tracker-not-compatible: '&cThat tracker is incompatible with this item.'
+tracker-already-on-item: '&cThat tracker is already on this item.'
+tracker-no-permission: "&cYou don't have permission to add that tracker to an item!"

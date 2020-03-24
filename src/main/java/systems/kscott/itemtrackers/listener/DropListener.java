@@ -67,11 +67,18 @@ public class DropListener implements Listener {
             }
 
             if (cursorItem.equals(applicationItem)) {
+                if (plugin.getConfigManager().getConfig().getBoolean("permission-based-application")) {
+                    if (!event.getWhoClicked().hasPermission("itemtrackers.apply."+trackerType)) {
+                        Chat.msg(event.getWhoClicked(), prefix+plugin.getLangManager().getConfig().getString("tracker-no-permission"));
+                        return;
+                    }
+                }
                 ItemStack newItem = null;
                 try {
                     newItem = tracker.addToItem(inventoryItem);
                 } catch (TrackerAlreadyExistsException | InvalidMaterialException e) {
-                    e.printStackTrace();
+                    Chat.msg(event.getWhoClicked(), prefix+plugin.getLangManager().getConfig().getString("tracker-already-on-item"));
+                    return;
                 }
 
                 event.setCurrentItem(newItem);
