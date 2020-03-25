@@ -43,9 +43,6 @@ public class Tracker {
     @Nullable private String extraData;
 
     @Getter
-    private IncrementType incrementType;
-
-    @Getter
     private List<Material> supportedItems;
 
     public Tracker(String id, String nameFormat, boolean displayName, String loreFormat, boolean displayLore, String statistic, @Nullable String extraData, String incrementType, List<String> supportedItems) {
@@ -62,7 +59,6 @@ public class Tracker {
             this.extraData = null;
         }
 
-        this.incrementType = IncrementType.valueOf(incrementType);
 
         List<Material> items = new ArrayList<>();
 

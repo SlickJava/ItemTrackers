@@ -88,7 +88,7 @@ public class TrackerManager {
                 extraData = trackerSection.getString("statistic.data.entity_type");
             }
 
-            String incrementType = trackerSection.getString("increment_type");
+            String incrementType = "";
 
             List<String> supportedItems = trackerSection.getStringList("supported_items");
 

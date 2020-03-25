@@ -1,7 +1,7 @@
 name: ItemTrackers
 version: ${project.version}
 main: systems.kscott.itemtrackers.ItemTrackers
-api-version: 1.13
+api-version: 1.14
 description: StatTrak-esque items in Minecraft!
 commands:
   it:
