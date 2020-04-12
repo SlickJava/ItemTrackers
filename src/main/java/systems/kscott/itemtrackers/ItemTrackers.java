@@ -2,16 +2,21 @@ package systems.kscott.itemtrackers;
 
 import co.aikar.commands.PaperCommandManager;
 import lombok.Getter;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 import systems.kscott.itemtrackers.commands.CommandItemTrackers;
+import systems.kscott.itemtrackers.listener.AnvilListener;
+import systems.kscott.itemtrackers.listener.CraftListener;
 import systems.kscott.itemtrackers.listener.DropListener;
 import systems.kscott.itemtrackers.listener.StatisticListener;
 import systems.kscott.itemtrackers.tracker.Tracker;
 import systems.kscott.itemtrackers.tracker.TrackerManager;
 import systems.kscott.itemtrackers.util.ConfigFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public final class ItemTrackers extends JavaPlugin {
 
@@ -43,6 +48,13 @@ public final class ItemTrackers extends JavaPlugin {
 
     private void registerCommands() {
         PaperCommandManager manager = new PaperCommandManager(this);
+        try {
+            manager.getLocales().loadYamlLanguageFile("lang.yml", Locale.ENGLISH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
         manager.registerCommand(new CommandItemTrackers(this));
         manager.getCommandCompletions().registerAsyncCompletion("trackers", c -> {
             TrackerManager trackerManager = TrackerManager.getInstance();
@@ -56,6 +68,8 @@ public final class ItemTrackers extends JavaPlugin {
 
     private void registerEvents() {
         getServer().getPluginManager().registerEvents(new StatisticListener(), this);
+        getServer().getPluginManager().registerEvents(new AnvilListener(this), this);
+        getServer().getPluginManager().registerEvents(new CraftListener(this), this);
         getServer().getPluginManager().registerEvents(new DropListener(this), this);
     }
 }

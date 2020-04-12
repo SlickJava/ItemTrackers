@@ -3,3 +3,22 @@ tracker-added: '&7The &b%name% &7tracker has been added to your item.'
 tracker-not-compatible: '&cThat tracker is incompatible with this item.'
 tracker-already-on-item: '&cThat tracker is already on this item.'
 tracker-no-permission: "&cYou don't have permission to add that tracker to an item!"
+command-invalid: "&7That command is invalid."
+tracker-given-personal: "&7You've received a tracker!"
+
+# Due to a technical limitation, these values will not update when running /it reload. Sorry for the inconvenience.
+acf-core.permission_denied: "I'm sorry, but you do not have permission to perform this command."
+acf-core.permission_denied_parameter: "I'm sorry, but you do not have permission to perform this command."
+acf-core.error_generic_logged: "An error occurred. This problem has been logged. Sorry for the inconvenience."
+acf-core.unknown_command: "Unknown Command, please type <c2>/help</c2>"
+acf-core.error_prefix: "Error: {message}"
+acf-core.error_performing_command: "I'm sorry, but there was an error performing this command."
+acf-core.info_message: "{message}"
+acf-core.please_specify_one_of: "Error: Please specify one of (<c2>{valid}</c2>)."
+acf-core.must_be_a_number: "Error: {num} must be a number."
+acf-core.must_be_min_length: "Error: Must be at least {min} characters long."
+acf-core.must_be_max_length: "Error: Must be at most {max} characters long."
+acf-core.please_specify_at_most: "Error: Please specify a value at most {max}."
+acf-core.please_specify_at_least: "Error: Please specify a value at least {min}."
+acf-core.not_allowed_on_console: "Error: Console may not execute this command."
+acf-core.could_not_find_player: "Error: Could not find a player by the name: <c2>{search}</c2>"

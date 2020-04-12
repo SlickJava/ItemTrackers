@@ -25,6 +25,10 @@ trackers:
       - 'IRON_PICKAXE'
       - 'STONE_PICKAXE'
       - 'WOODEN_PICKAXE'
+
+    # Does this tracker need to be held in the hand to update statistics?
+    # If false: the tracker will update even if its sitting in your inventory.
+    must_be_held: true
   entities_killed:
     name:
       display_in_name: true
@@ -51,3 +55,31 @@ trackers:
       - 'IRON_PICKAXE'
       - 'STONE_PICKAXE'
       - 'WOODEN_PICKAXE'
+    # Does this tracker need to be held in the hand to update statistics?
+    # If false: the tracker will update even if its sitting in your inventory.
+    must_be_held: true
+  pedometer:
+    name:
+      display_in_name: false
+      name_format: "%current_name% &c&l[&e%number%&c&l]"
+    lore:
+      display_in_lore: false
+      lore_format: "&7Steps taken: &b%number%"
+    statistic:
+      # Use the names found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Statistic.html :)
+      # Use '*' to target all values - i.e. 'material: * or 'entity_type: *'
+      name: WALK_ONE_CM
+      options:
+
+    application_item:
+      name: "&b&lTracker Application Crystal"
+      lore:
+        - "&7This item will apply the &bDiamonds Mined"
+        - "&7tracker to your pickaxe."
+      material: DIAMOND
+    # Use the names found in https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html :ok_hand:
+    supported_items:
+      - 'COMPASS'
+    # Does this tracker need to be held in the hand to update statistics?
+    # If false: the tracker will update even if its sitting in your inventory.
+    must_be_held: false

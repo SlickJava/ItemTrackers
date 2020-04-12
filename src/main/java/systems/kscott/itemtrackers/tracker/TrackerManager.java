@@ -87,12 +87,13 @@ public class TrackerManager {
             } else if (trackerSection.contains("statistic.data.entity_type")) {
                 extraData = trackerSection.getString("statistic.data.entity_type");
             }
-
             String incrementType = "";
+
+            boolean requires_held = trackerSection.getBoolean("must_be_held");
 
             List<String> supportedItems = trackerSection.getStringList("supported_items");
 
-            Tracker tracker = new Tracker(trackerId, nameFormat, displayName, loreFormat, displayLore, statistic, extraData, incrementType, supportedItems);
+            Tracker tracker = new Tracker(trackerId, nameFormat, displayName, loreFormat, displayLore, statistic, extraData, incrementType, supportedItems, requires_held);
 
             trackers.add(tracker);
         }

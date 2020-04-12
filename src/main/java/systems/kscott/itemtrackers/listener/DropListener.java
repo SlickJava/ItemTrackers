@@ -36,6 +36,10 @@ public class DropListener implements Listener {
                 return;
             }
 
+            if (cursorItem.getType().equals(Material.AIR) || inventoryItem.getType().equals(Material.AIR)) {
+                return;
+            }
+
             NBTItem cursorNbti = new NBTItem(cursorItem);
 
             String trackerType = cursorNbti.getString("tracker_id");
@@ -45,6 +49,17 @@ public class DropListener implements Listener {
             try {
                 applicationItem = manager.getApplicationItem(trackerType).getItem();
             } catch (NoTrackerException e) {
+                return;
+            }
+
+            /* Don't send incompatible message if combining stacks of same item */
+            ItemStack inventoryClone = inventoryItem.clone();
+            ItemStack applicationClone = applicationItem.clone();
+
+            inventoryClone.setAmount(1);
+            applicationClone.setAmount(1);
+
+            if (inventoryClone == applicationClone) {
                 return;
             }
 

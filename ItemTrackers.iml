@@ -46,9 +46,12 @@
     <orderEntry type="library" name="Maven: net.jodah:expiringmap:0.5.8" level="project" />
     <orderEntry type="library" name="Maven: co.aikar:minecraft-timings:1.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
-    <orderEntry type="library" name="Maven: de.tr7zw:item-nbt-api-plugin:2.2.0" level="project" />
-    <orderEntry type="library" name="Maven: de.tr7zw:item-nbt-api:2.2.0" level="project" />
-    <orderEntry type="library" name="Maven: de.tr7zw:nbt-injector:2.2.0" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.26.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: de.tr7zw:item-nbt-api-plugin:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: de.tr7zw:item-nbt-api:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: de.tr7zw:functional-annotations:0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: de.tr7zw:nbt-injector:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.27.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: de.tr7zw:nbt-data-api:2.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: me.clip:placeholderapi:2.10.5" level="project" />
   </component>
 </module>

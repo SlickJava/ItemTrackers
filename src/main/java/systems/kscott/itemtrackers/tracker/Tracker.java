@@ -22,6 +22,9 @@ import java.util.List;
 public class Tracker {
 
     @Getter
+    private boolean requiresHeld;
+
+    @Getter
     private String id;
 
     @Getter
@@ -45,7 +48,7 @@ public class Tracker {
     @Getter
     private List<Material> supportedItems;
 
-    public Tracker(String id, String nameFormat, boolean displayName, String loreFormat, boolean displayLore, String statistic, @Nullable String extraData, String incrementType, List<String> supportedItems) {
+    public Tracker(String id, String nameFormat, boolean displayName, String loreFormat, boolean displayLore, String statistic, @Nullable String extraData, String incrementType, List<String> supportedItems, boolean requires_held) {
         this.id = id;
         this.nameFormat = nameFormat;
         this.displayName = displayName;
@@ -67,6 +70,7 @@ public class Tracker {
         }
 
         this.supportedItems = items;
+        this.requiresHeld = requires_held;
     }
 
     public boolean isValidItem(ItemStack item) {

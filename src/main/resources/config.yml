@@ -5,3 +5,9 @@ debug-mode: false
 
 # Should users require the `itemtrackers.apply.[tracker_name]` permission to apply a tracker?
 permission-based-application: false
+
+# Should ItemTrackers stop you from using application items in crafting recipes?
+disable-application-item-craft: true
+
+# Should ItemTrackers stop you from renaming the application items in an anvil?
+disable-application-item-rename: true

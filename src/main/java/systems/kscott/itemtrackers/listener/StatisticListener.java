@@ -16,13 +16,30 @@ import systems.kscott.itemtrackers.tracker.TrackerManager;
 
 public class StatisticListener implements Listener {
 
+    private TrackerManager trackerManager;
+
+    public StatisticListener() {
+        trackerManager = TrackerManager.getInstance();
+    }
+
     @EventHandler
     public void statisticHandler(PlayerStatisticIncrementEvent event) {
         Player player = event.getPlayer();
+
+        /* Inventory trackers */
+        for (int i = 0; i <= player.getInventory().getContents().length; i++) {
+            ItemStack item = player.getInventory().getItem(i);
+            if (!(player.getInventory().getItem(i) == null)) {
+                if (!player.getInventory().getItem(i).equals(Material.AIR)) {
+                    updateTrackers(event, i, player.getInventory().getItem(i));
+                }
+            }
+        }
+    }
+
+    private void updateTrackers(PlayerStatisticIncrementEvent event, int index, ItemStack item) {
         Statistic statistic = event.getStatistic();
-        ItemStack item = player.getInventory().getItemInMainHand();
-        int index = player.getInventory().getHeldItemSlot();
-        TrackerManager manager = TrackerManager.getInstance();
+        Player player = event.getPlayer();
 
         ItemStack newItem = item.clone();
 
@@ -36,9 +53,15 @@ public class StatisticListener implements Listener {
             Tracker tracker = null;
 
             try {
-                tracker = manager.getTracker(trackerString2);
+                tracker = trackerManager.getTracker(trackerString2);
             } catch (NoTrackerException e) {
                 continue;
+            }
+
+            if (tracker.isRequiresHeld()) {
+                if (player.getInventory().getHeldItemSlot() != index) {
+                    continue;
+                }
             }
 
             if (statistic == tracker.getStatistic()) {
@@ -55,6 +78,13 @@ public class StatisticListener implements Listener {
                 } else if (statistic == Statistic.KILL_ENTITY) {
                     EntityType entityType = event.getEntityType();
 
+                    if (tracker.getExtraData().equals("*")) {
+                        newItem = tracker.incrementTracker(newItem);
+                    } else if (EntityType.valueOf(tracker.getExtraData()) == entityType) {
+                        newItem = tracker.incrementTracker(newItem);
+                    }
+                } else if (statistic == Statistic.ANIMALS_BRED) {
+                    EntityType entityType = event.getEntityType();
                     if (tracker.getExtraData().equals("*")) {
                         newItem = tracker.incrementTracker(newItem);
                     } else if (EntityType.valueOf(tracker.getExtraData()) == entityType) {

@@ -33,7 +33,7 @@ public class CommandItemTrackers extends BaseCommand {
         Chat.msg(sender, "&b/it list &8- &7Get a list of all trackers.");
         Chat.msg(sender, "&b/it info <tracker> &8- &7Get info on a tracker");
         Chat.msg(sender, "&b/it add <tracker> &8- &7Add a tracker to the item you're currently holding");
-        Chat.msg(sender, "&b/it give <tracker> [player] &8- &7Get a tracker application item");
+        Chat.msg(sender, "&b/it give <tracker> [amount] [playerName] &8- &7Get a tracker application item");
     }
 
     @Subcommand("list")
@@ -58,6 +58,7 @@ public class CommandItemTrackers extends BaseCommand {
 
     @Subcommand("info")
     @CommandCompletion("@trackers")
+    @Syntax("&7/it info &b<tracker>")
     public void info(CommandSender sender, String trackerName) {
 
         String prefix = plugin.getLangManager().getConfig().getString("prefix");
@@ -89,12 +90,14 @@ public class CommandItemTrackers extends BaseCommand {
     }
 
     @Subcommand("info application")
+    @Syntax("&7/it info application &b<tracker>")
     public void infoApplication(CommandSender sender, String trackerName) {
         Chat.msg(sender, "&3TODO");
     }
 
     @Subcommand("add")
     @CommandCompletion("@trackers")
+    @Syntax("&7/it add <tracker>")
     public void addTracker(Player player, String trackerName) {
         String prefix = plugin.getLangManager().getConfig().getString("prefix");
 
@@ -108,7 +111,7 @@ public class CommandItemTrackers extends BaseCommand {
         } catch (NoTrackerException e) {
             Chat.msg(player, prefix+"&cA tracker by that ID cannot be found.");
         } catch (InvalidMaterialException e) {
-            Chat.msg(player, prefix + "&cThis tracker cannot be added to this item.");
+            Chat.msg(player, prefix + plugin.getLangManager().getConfig().getString("tracker-not-compatible"));
         } catch (TrackerAlreadyExistsException e) {
             Chat.msg(player, prefix +"&cThis item already has that tracker.");
         }
@@ -119,21 +122,21 @@ public class CommandItemTrackers extends BaseCommand {
         }
     }
 
-    /*@Subcommand("increment")
-    public void incrementTracker(Player player) {
-        TrackerManager manager = TrackerManager.getInstance();
-        int index = player.getInventory().getHeldItemSlot();
-        ItemStack heldItem = player.getInventory().getItemInMainHand();
-        try {
-            player.getInventory().setItem(index, manager.getTracker("diamonds_mined").incrementTracker(heldItem));
+    @Subcommand("reload")
+    public void reload(Player player) {
+        String prefix = plugin.getLangManager().getConfig().getString("prefix");
 
-        } catch (NoTrackerException e) {
-            e.printStackTrace();
-        }
-    }*/
+        plugin.getConfigManager().reload();
+        plugin.getLangManager().reload();
+        plugin.getTrackersManager().reload();
+        TrackerManager.getInstance().reload();
+
+        Chat.msg(player, prefix+"&7Successfully reloaded &3config.yml&7, &3trackers.yml&7, and &3lang.yml&7.");
+    }
 
     @Subcommand("get|give")
     @CommandCompletion("@trackers")
+    @Syntax("&7/it get &b<tracker> [amount] [player]")
     public void getApplicationItem(Player player, String trackerName) {
         String prefix = plugin.getLangManager().getConfig().getString("prefix");
         TrackerManager manager = TrackerManager.getInstance();
@@ -150,11 +153,13 @@ public class CommandItemTrackers extends BaseCommand {
         if (applicationItem != null) {
             ItemStack itemStack = applicationItem.getItem();
             player.getInventory().addItem(itemStack);
+            Chat.msg(player, prefix+plugin.getLangManager().getConfig().getStringList("tracker-given-personal"));
         }
     }
 
     @Subcommand("get|give")
     @CommandCompletion("@trackers @players")
+    @Syntax("&7/it get &b<tracker> [amount] [player]")
     public void getApplicationItem(Player player, String trackerName, Player playerToGive) {
         String prefix = plugin.getLangManager().getConfig().getString("prefix");
         TrackerManager manager = TrackerManager.getInstance();
@@ -171,6 +176,31 @@ public class CommandItemTrackers extends BaseCommand {
         if (applicationItem != null) {
             ItemStack itemStack = applicationItem.getItem();
             playerToGive.getInventory().addItem(itemStack);
+            Chat.msg(player, prefix+plugin.getLangManager().getConfig().getStringList("tracker-given-personal"));
+        }
+    }
+
+    @Subcommand("get|give")
+    @CommandCompletion("@trackers @nothing @players")
+    @Syntax("&7/it get &b<tracker> [amount] [player]")
+    public void getApplicationItem(Player player, String trackerName, Player playerToGive, int count) {
+        String prefix = plugin.getLangManager().getConfig().getString("prefix");
+        TrackerManager manager = TrackerManager.getInstance();
+
+        ApplicationItem applicationItem = null;
+
+        try {
+            applicationItem = manager.getApplicationItem(trackerName);
+        } catch (NoTrackerException e) {
+            Chat.msg(player, prefix+"&cA tracker by that ID cannot be found.");
+            return;
+        }
+
+        if (applicationItem != null) {
+            ItemStack itemStack = applicationItem.getItem();
+            itemStack.setAmount(count);
+            playerToGive.getInventory().addItem(itemStack);
+            Chat.msg(player, prefix+plugin.getLangManager().getConfig().getStringList("tracker-given-personal"));
         }
     }
 }
