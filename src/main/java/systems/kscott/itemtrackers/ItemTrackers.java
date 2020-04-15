@@ -53,9 +53,7 @@ public final class ItemTrackers extends JavaPlugin {
         PaperCommandManager manager = new PaperCommandManager(this);
         try {
             manager.getLocales().loadYamlLanguageFile("lang.yml", Locale.ENGLISH);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
         manager.registerCommand(new CommandItemTrackers(this));
