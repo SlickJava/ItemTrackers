@@ -4,7 +4,7 @@
   <groupId>systems.kscott</groupId>
   <artifactId>ItemTrackers</artifactId>
   <name>ItemTrackers</name>
-  <version>1.2.0</version>
+  <version>1.2.2</version>
   <description>StatTrak-esque items in Minecraft!</description>
   <build>
     <defaultGoal>clean package</defaultGoal>

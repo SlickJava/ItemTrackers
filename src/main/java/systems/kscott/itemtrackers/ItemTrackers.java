@@ -12,6 +12,7 @@ import systems.kscott.itemtrackers.listener.StatisticListener;
 import systems.kscott.itemtrackers.tracker.Tracker;
 import systems.kscott.itemtrackers.tracker.TrackerManager;
 import systems.kscott.itemtrackers.util.ConfigFile;
+import systems.kscott.itemtrackers.util.Metrics;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,6 +41,8 @@ public final class ItemTrackers extends JavaPlugin {
 
         registerCommands();
         registerEvents();
+
+        new Metrics(this, 7101);
     }
 
     @Override

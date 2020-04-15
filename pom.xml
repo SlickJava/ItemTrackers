@@ -6,7 +6,7 @@
 
     <groupId>systems.kscott</groupId>
     <artifactId>ItemTrackers</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.2</version>
     <packaging>jar</packaging>
 
     <name>ItemTrackers</name>

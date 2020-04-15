@@ -7,11 +7,12 @@ command-invalid: "&7That command is invalid."
 tracker-given-personal: "&7You've received a tracker!"
 
 # Due to a technical limitation, these values will not update when running /it reload. Sorry for the inconvenience.
+acf-core.invalid_syntax: "&cInvalid syntax. &7Try: {syntax}"
 acf-core.permission_denied: "I'm sorry, but you do not have permission to perform this command."
 acf-core.permission_denied_parameter: "I'm sorry, but you do not have permission to perform this command."
 acf-core.error_generic_logged: "An error occurred. This problem has been logged. Sorry for the inconvenience."
 acf-core.unknown_command: "Unknown Command, please type <c2>/help</c2>"
-acf-core.error_prefix: "Error: {message}"
+acf-core.error_prefix: "{message}"
 acf-core.error_performing_command: "I'm sorry, but there was an error performing this command."
 acf-core.info_message: "{message}"
 acf-core.please_specify_one_of: "Error: Please specify one of (<c2>{valid}</c2>)."

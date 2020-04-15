@@ -27,13 +27,14 @@ public class CommandItemTrackers extends BaseCommand {
     }
 
     @Default
-    @CommandAlias("help")
+    @Subcommand("help")
     public void help(CommandSender sender) {
         Chat.msg(sender, "&3[&eItemTrackers&3] &7v"+plugin.getDescription().getVersion()+" by &b89apt89");
         Chat.msg(sender, "&b/it list &8- &7Get a list of all trackers.");
         Chat.msg(sender, "&b/it info <tracker> &8- &7Get info on a tracker");
         Chat.msg(sender, "&b/it add <tracker> &8- &7Add a tracker to the item you're currently holding");
-        Chat.msg(sender, "&b/it give <tracker> [amount] [playerName] &8- &7Get a tracker application item");
+        Chat.msg(sender, "&b/it get <tracker> &8- &7Get a tracker application item");
+        Chat.msg(sender, "&b/it give <tracker> <player> [amount] &8- &7Give a tracker application item");
     }
 
     @Subcommand("list")
@@ -134,9 +135,9 @@ public class CommandItemTrackers extends BaseCommand {
         Chat.msg(player, prefix+"&7Successfully reloaded &3config.yml&7, &3trackers.yml&7, and &3lang.yml&7.");
     }
 
-    @Subcommand("get|give")
+    @Subcommand("get")
     @CommandCompletion("@trackers")
-    @Syntax("&7/it get &b<tracker> [amount] [player]")
+    @Syntax("&7/it get &b<tracker>")
     public void getApplicationItem(Player player, String trackerName) {
         String prefix = plugin.getLangManager().getConfig().getString("prefix");
         TrackerManager manager = TrackerManager.getInstance();
@@ -157,9 +158,9 @@ public class CommandItemTrackers extends BaseCommand {
         }
     }
 
-    @Subcommand("get|give")
+    @Subcommand("give")
     @CommandCompletion("@trackers @players")
-    @Syntax("&7/it get &b<tracker> [amount] [player]")
+    @Syntax("&7/it give &b<tracker> [player]")
     public void getApplicationItem(Player player, String trackerName, Player playerToGive) {
         String prefix = plugin.getLangManager().getConfig().getString("prefix");
         TrackerManager manager = TrackerManager.getInstance();
@@ -180,9 +181,9 @@ public class CommandItemTrackers extends BaseCommand {
         }
     }
 
-    @Subcommand("get|give")
-    @CommandCompletion("@trackers @nothing @players")
-    @Syntax("&7/it get &b<tracker> [amount] [player]")
+    @Subcommand("give")
+    @CommandCompletion("@trackers @players @nothing")
+    @Syntax("&7/it give &b<tracker> [player] [amount]")
     public void getApplicationItem(Player player, String trackerName, Player playerToGive, int count) {
         String prefix = plugin.getLangManager().getConfig().getString("prefix");
         TrackerManager manager = TrackerManager.getInstance();
